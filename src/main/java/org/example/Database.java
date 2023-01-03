@@ -10,7 +10,7 @@ public class Database {
 
     private static Connection connection;
     private static Statement statement;
-    private static Map<String, Double> generosity;
+    private static Map<String, Double> netWorth;
 
     public static void init(ArrayList<Person> people) throws SQLException {
 
@@ -22,9 +22,9 @@ public class Database {
             putDataIntoPerson(people.get(i));
         }
 
-        getGenerosityByCountry();
+        getNetWorthByCountry();
         EventQueue.invokeLater(() -> {
-            Graphics g = new Graphics(generosity);
+            Graphics g = new Graphics(netWorth);
             g.setVisible(true);
         });
 
@@ -72,8 +72,8 @@ public class Database {
         statement.executeUpdate(query);
     }
 
-    private static void getGenerosityByCountry() throws SQLException {
-        generosity = new HashMap<>();
+    private static void getNetWorthByCountry() throws SQLException {
+        netWorth = new HashMap<>();
         String sql =
                 "SELECT country, netWorth " +
                         "FROM Person " +
@@ -81,7 +81,7 @@ public class Database {
 
         ResultSet res = statement.executeQuery(sql);
         while(res.next()) {
-            generosity.put(res.getString("country"), Double.parseDouble(res.getString("netWorth")));
+            netWorth.put(res.getString("country"), Double.parseDouble(res.getString("netWorth")));
         }
     }
 
@@ -94,12 +94,11 @@ public class Database {
     }
 
     private static String richestAmericanInTheEnergyIndustry() throws SQLException {
-        StringBuilder stringBuilder = new StringBuilder();
-
         return statement.executeQuery(
-                "SELECT fullName, source, max(netWorth) " +
+                "SELECT fullName, max(netWorth) " +
                         "FROM person " +
                         "WHERE country='United States' AND industry='Energy';"
         ).getString("fullName");
     }
+
 }
