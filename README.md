@@ -35,7 +35,7 @@
 ## 3.Выведите в консоль имя бизнесмена из США, имеющего самый большой капитал в сфере Energy. <br>
 Формат sql-запроса:
 
-![sql3](https://github.com/tuloAminov/forbesStats/blob/main/png/sql2.png)
+![sql3](https://github.com/tuloAminov/forbesStats/blob/main/png/sql3.png)
 
 Ответ:
 
