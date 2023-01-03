@@ -2,7 +2,7 @@
 
 ### Класс для хранения данных из CSV файла
 
-![class](https://github.com/tuloAminov/forbesStats/blob/main/png/%20class%20person.png)
+![class](https://github.com/tuloAminov/forbesStats/blob/main/png/person.png)
 
 ### Создание таблицы Person:
 
